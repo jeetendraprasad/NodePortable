@@ -33,12 +33,19 @@ MKDIR "%WORKING_FOLDER1%\USER-PREFIX"
 %ComSpec% /C npm config list
 %ComSpec% /C npm config ls -l
 
+@ECHO.
+@ECHO.
+@ECHO Press any key to start Node Portable . . .
+@ECHO.
+@ECHO.
+@pause >nul
 
-PAUSE
+
 START "Node Portable" %ComSpec%
 
 EXIT
 
+@REM example code
 npm install json-server
 SET PATH="%WORKING_FOLDER1%\node_modules\.bin";%PATH%
 # assume that db.json exists
