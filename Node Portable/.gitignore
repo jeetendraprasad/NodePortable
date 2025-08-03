@@ -1,4 +1,3 @@
-USER-CACHE/
-node_modules/
-USERCACHE/
 node-v22.17.0-win-x64/
+CACHE/
+PREFIX/
