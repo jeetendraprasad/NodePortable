@@ -7,15 +7,19 @@ ECHO %WORKING_FOLDER1%
 SET NODE_FOLDER=node-v22.17.0-win-x64
 SET NODE_FOLDER_ZIP=node-v22.17.0-win-x64.zip
 
-
+@REM UNUSED
+@REM SET NODE_EXE_PATH=%WORKING_FOLDER1%\%NODE_FOLDER%\node.exe
 
 IF NOT EXIST "%WORKING_FOLDER1%\%NODE_FOLDER%\" (
 	powershell -noprofile -executionpolicy remotesigned -command " Expand-Archive -Path '%WORKING_FOLDER1%\%NODE_FOLDER_ZIP%' -DestinationPath '%WORKING_FOLDER1%\' "
 )
 
-SET PATH="%WORKING_FOLDER1%\%NODE_FOLDER%\"
+SET PATH=%WORKING_FOLDER1%\%NODE_FOLDER%\
+SET PATH="%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\";%PATH%
 SET PATH="%WORKING_FOLDER1%\node_modules\.bin";%PATH%
-@REM SET PATH=%PATH%;%SystemRoot%\System32\WindowsPowerShell\v1.0\;
+SET PATH="C:\Program Files\dotnet";%PATH%
+SET PATH=%LOCALAPPDATA%\Programs\Git\cmd\;%PATH%
+SET PATH=%SystemRoot%\System32\WindowsPowerShell\v1.0\;%PATH%
 
 MKDIR "%WORKING_FOLDER1%\USERHOME"
 @REM NOTE NO double quotes in USERHOME
@@ -46,7 +50,10 @@ MKDIR "%WORKING_FOLDER1%\CACHE\"
 @pause >nul
 
 
-START "Node Portable" %ComSpec% /k echo Remember for local node packages installations: SET PATH=local_folder\node_modules\.bin;OLD_PATH
+@REM START "Node Portable" %ComSpec%
+START "Node Portable" %ComSpec% /k echo Remember for local node packages installations: SET PATH=local_folder\node_modules\.bin;ORIG_PATH
+@REM SET PATH="%CD%\node_modules\.bin";%PATH%
+
 
 EXIT
 
