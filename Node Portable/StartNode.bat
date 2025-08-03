@@ -21,17 +21,22 @@ MKDIR "%WORKING_FOLDER1%\USERHOME"
 @REM NOTE NO double quotes in USERHOME
 SET HOME=%WORKING_FOLDER1%\USERHOME
 
-%ComSpec% /C npm config get cache
-MKDIR "%WORKING_FOLDER1%\USERCACHE\"
-%ComSpec% /C npm config set cache "%WORKING_FOLDER1%\USERCACHE"
+MKDIR "%WORKING_FOLDER1%\PREFIX"
+@REM %ComSpec% /C npm config set prefix "%WORKING_FOLDER1%\PREFIX"
+@REM NOTE NO double quotes
+SET NPM_CONFIG_PREFIX=%WORKING_FOLDER1%\PREFIX
+SET PATH="%WORKING_FOLDER1%\PREFIX";%PATH%
 
-MKDIR "%WORKING_FOLDER1%\USER-PREFIX"
-%ComSpec% /C npm config set prefix "%WORKING_FOLDER1%\USER-PREFIX"
+MKDIR "%WORKING_FOLDER1%\GLOBALCONFIG\"
+SET NPM_CONFIG_GLOBALCONFIG=%WORKING_FOLDER1%\GLOBALCONFIG\.npmrc
+
+MKDIR "%WORKING_FOLDER1%\CACHE\"
+%ComSpec% /C npm config --global set cache "%WORKING_FOLDER1%\CACHE"
 
 %ComSpec% /C node -v
 %ComSpec% /C npm -v
-%ComSpec% /C npm config list
 %ComSpec% /C npm config ls -l
+%ComSpec% /C npm config list
 
 @ECHO.
 @ECHO.
@@ -41,7 +46,7 @@ MKDIR "%WORKING_FOLDER1%\USER-PREFIX"
 @pause >nul
 
 
-START "Node Portable" %ComSpec%
+START "Node Portable" %ComSpec% /k echo Remember for local node packages installations: SET PATH=local_folder\node_modules\.bin;OLD_PATH
 
 EXIT
 
