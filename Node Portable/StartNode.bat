@@ -15,11 +15,11 @@ IF NOT EXIST "%WORKING_FOLDER1%\%NODE_FOLDER%\" (
 )
 
 SET PATH=%WORKING_FOLDER1%\%NODE_FOLDER%\
-SET PATH="%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\";%PATH%
+@REM SET PATH="%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\";%PATH%
 SET PATH="%WORKING_FOLDER1%\node_modules\.bin";%PATH%
-SET PATH="C:\Program Files\dotnet";%PATH%
-SET PATH=%LOCALAPPDATA%\Programs\Git\cmd\;%PATH%
-SET PATH=%SystemRoot%\System32\WindowsPowerShell\v1.0\;%PATH%
+@REM SET PATH="C:\Program Files\dotnet";%PATH%
+@REM SET PATH=%LOCALAPPDATA%\Programs\Git\cmd\;%PATH%
+@REM SET PATH=%SystemRoot%\System32\WindowsPowerShell\v1.0\;%PATH%
 
 MKDIR "%WORKING_FOLDER1%\USERHOME"
 @REM NOTE NO double quotes in USERHOME
