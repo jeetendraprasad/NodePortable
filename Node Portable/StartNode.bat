@@ -15,9 +15,9 @@ IF NOT EXIST "%WORKING_FOLDER1%\%NODE_FOLDER%\" (
 )
 
 SET PATH=%WORKING_FOLDER1%\%NODE_FOLDER%\
-@REM SET PATH="%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\";%PATH%
-SET PATH="%WORKING_FOLDER1%\node_modules\.bin";%PATH%
-@REM SET PATH="C:\Program Files\dotnet";%PATH%
+@REM SET PATH=%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\;%PATH%
+SET PATH=%WORKING_FOLDER1%\node_modules\.bin;%PATH%
+@REM SET PATH=C:\Program Files\dotnet;%PATH%
 @REM SET PATH=%LOCALAPPDATA%\Programs\Git\cmd\;%PATH%
 @REM SET PATH=%SystemRoot%\System32\WindowsPowerShell\v1.0\;%PATH%
 
@@ -29,7 +29,7 @@ MKDIR "%WORKING_FOLDER1%\PREFIX"
 @REM %ComSpec% /C npm config set prefix "%WORKING_FOLDER1%\PREFIX"
 @REM NOTE NO double quotes
 SET NPM_CONFIG_PREFIX=%WORKING_FOLDER1%\PREFIX
-SET PATH="%WORKING_FOLDER1%\PREFIX";%PATH%
+SET PATH=%WORKING_FOLDER1%\PREFIX;%PATH%
 
 MKDIR "%WORKING_FOLDER1%\GLOBALCONFIG\"
 SET NPM_CONFIG_GLOBALCONFIG=%WORKING_FOLDER1%\GLOBALCONFIG\.npmrc
@@ -52,14 +52,14 @@ MKDIR "%WORKING_FOLDER1%\CACHE\"
 
 @REM START "Node Portable" %ComSpec%
 START "Node Portable" %ComSpec% /k echo Remember for local node packages installations: SET PATH=local_folder\node_modules\.bin;ORIG_PATH
-@REM SET PATH="%CD%\node_modules\.bin";%PATH%
+@REM SET PATH=%CD%\node_modules\.bin;%PATH%
 
 
 EXIT
 
 @REM example code
 npm install json-server
-SET PATH="%WORKING_FOLDER1%\node_modules\.bin";%PATH%
+SET PATH=%WORKING_FOLDER1%\node_modules\.bin;%PATH%
 # assume that db.json exists
 json-server db.json
 Ctrl+C
